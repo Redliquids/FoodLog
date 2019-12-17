@@ -1,0 +1,37 @@
+
+Create SQLite DB
+
+CREATE TABLE Posts (
+	postID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	Posted DATETIME,
+	Notes TEXT
+);
+
+CREATE TABLE Consumable (
+	consumableID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	consumableName TEXT,
+	FK_postID INTEGER,
+	FOREIGN KEY(FK_postID) REFERENCES Posts(postID)
+);
+
+SELECT * FROM Posts WHERE postID 1
+
+Might want to force consumableName UNIQUE to avoid copies.
+
+INSERT INTO Posts (Posted, Notes)
+VALUES('2019-12-17 15:40:05', 'Feeling Good :)');
+INSERT INTO Posts (Posted, Notes)
+VALUES('2019-12-18 14:40:05', 'Feeling Bad :(');
+
+
+INSERT INTO Consumable (consumableName,FK_postID)
+VALUES('Ground Beef', 1);
+INSERT INTO Consumable (consumableName,FK_postID)
+VALUES('Green Tea', 1);
+INSERT INTO Consumable (consumableName,FK_postID)
+VALUES('Coffee', 2);
+
+
+SELECT * FROM Posts;
+SELECT * FROM Consumable 
+SELECT * FROM Posts WHERE postID == 2
