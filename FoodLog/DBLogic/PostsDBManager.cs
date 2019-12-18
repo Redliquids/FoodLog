@@ -26,7 +26,21 @@ namespace FoodLog.DBLogic
 
                 using (SQLiteConnection con = new SQLiteConnection(conString))
                 {
+                    using (SQLiteCommand com = new SQLiteCommand(con))
+                    {
+                        com.Connection.Open();
 
+                        com.CommandText = @"CREATE TABLE Posts (
+	                                        postID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	                                        Posted DATETIME,
+	                                        Notes TEXT
+                                        );";
+
+                        com.ExecuteNonQuery();
+
+                        //ToDo: Create Consumable table.
+                        //ToDo: Create dummy data for testing.
+                    }
                 }
             }
 
